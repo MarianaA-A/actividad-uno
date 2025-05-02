@@ -1,45 +1,64 @@
 <!DOCTYPE html>
+<!-- Esto le dice al navegador que este archivo está escrito en HTML5 -->
 <html lang="en">
 <head>
+    <!-- Esto define la codificación de texto para que se vean bien los caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- Esto hace que la página se vea bien en celulares y tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Aquí se está cargando Tailwind CSS, una herramienta para dar estilo a la página -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>New Restaurant</title>
 </head>
 <body class="bg-gray-100 font-sans">
-    <!-- Navbar -->
- <nav class="bg-gray-900 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold">Directorio de Restaurantes</h1>
+
+    <!-- Barra superior con el nombre del sitio y los enlaces a otras páginas -->
+    <nav class="bg-gray-900 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Título del sitio -->
+            <h1 class="text-2xl font-bold">Directorio de Restaurantes</h1>
             <div class="space-x-4">
+                <!-- Enlaces para ir a otras páginas -->
                 <a href="home.html" class="hover:text-blue-300">Home</a>
                 <a href="search.html" class="hover:text-blue-300">Search</a>
                 <a href="new-restaurant.html" class="hover:text-blue-300">New Restaurant</a>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-    <!-- Contenido Principal -->
+    <!-- Contenido principal de esta página -->
     <div class="container mx-auto p-4">
+        <!-- Título de la sección -->
         <h2 class="text-3xl font-bold text-center mb-6">Agregar Nuevo Restaurante</h2>
+
+        <!-- Formulario donde se escriben los datos del nuevo restaurante -->
         <form class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+            
+            <!-- Campo para escribir el nombre del restaurante -->
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
                 <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
+
+            <!-- Campo para escribir una descripción -->
             <div class="mb-4">
                 <label for="description" class="block text-gray-700 font-bold mb-2">Descripción</label>
                 <textarea id="description" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
+
+            <!-- Campo para escribir la dirección -->
             <div class="mb-4">
                 <label for="address" class="block text-gray-700 font-bold mb-2">Dirección</label>
                 <input type="text" id="address" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
+
+            <!-- Campo para pegar la dirección de la imagen del restaurante -->
             <div class="mb-4">
                 <label for="image" class="block text-gray-700 font-bold mb-2">URL de la Imagen</label>
                 <input type="url" id="image" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
+
+            <!-- Botón para guardar los datos del nuevo restaurante -->
             <button type="submit" class="w-full bg-green-700 text-white py-3 rounded-lg hover:bg-green-900 transition duration-300">Guardar Restaurante</button>
         </form>
     </div>
