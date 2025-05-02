@@ -1,52 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Indica que este archivo está usando HTML5 -->
+<html lang="en"> <!-- Comienza el documento HTML y el idioma es inglés -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Search</title>
+    <meta charset="UTF-8"> <!-- Permite mostrar caracteres especiales como tildes o ñ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que se vea bien en pantallas pequeñas como celulares -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> <!-- Agrega Tailwind CSS, una herramienta para diseñar rápido -->
+    <title>Search</title> <!-- Título que aparece en la pestaña del navegador -->
 </head>
-<body class="bg-gray-100 font-sans">
-    <!-- Navbar -->
- <nav class="bg-gray-900 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold">Directorio de Restaurantes</h1>
-            <div class="space-x-4">
-                <a href="home.html" class="hover:text-blue-300">Home</a>
-                <a href="search.html" class="hover:text-blue-300">Search</a>
-                <a href="new-restaurant.html" class="hover:text-blue-300">New Restaurant</a>
+<body class="bg-gray-100 font-sans"> <!-- Fondo gris claro y tipo de letra limpia -->
+
+    <!-- Navbar: es la barra de navegación que está en la parte superior -->
+    <nav class="bg-gray-900 text-white p-4"> <!-- Fondo gris oscuro, letras blancas y espacio interno -->
+        <div class="container mx-auto flex justify-between items-center"> <!-- Organiza el contenido centrado y separado en dos lados -->
+            <h1 class="text-2xl font-bold">Directorio de Restaurantes</h1> <!-- Título de la barra de navegación -->
+            <div class="space-x-4"> <!-- Agrega espacio entre los enlaces -->
+                <a href="home.html" class="hover:text-blue-300">Home</a> <!-- Enlace a la página principal -->
+                <a href="search.html" class="hover:text-blue-300">Search</a> <!-- Enlace a la página de búsqueda -->
+                <a href="new-restaurant.html" class="hover:text-blue-300">New Restaurant</a> <!-- Enlace para agregar un nuevo restaurante -->
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
     
-    <div class="container mx-auto p-4">
-        <h2 class="text-3xl font-bold text-center mb-6">Buscar Restaurantes</h2>
-        <div class="flex justify-center mb-6">
-            <input type="text" id="searchInput" placeholder="Buscar por nombre..." class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div id="results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="container mx-auto p-4"> <!-- Contenedor principal, centrado y con espacio interno -->
+        <h2 class="text-3xl font-bold text-center mb-6">Buscar Restaurantes</h2> <!-- Título de la sección de búsqueda -->
 
+        <!-- Cuadro de búsqueda -->
+        <div class="flex justify-center mb-6">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre..." 
+                   class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <!-- Cuadro de texto para buscar, ocupa toda la fila en móvil y la mitad en pantallas medianas -->
+        </div>
+
+        <!-- Aquí se mostrarán los resultados de búsqueda -->
+        <div id="results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Usamos una cuadrícula: 1 columna en celulares, 2 en pantallas medianas, 3 en pantallas grandes -->
         </div>
     </div>
 
     <script>
+        // Lista de restaurantes, cada uno tiene nombre, descripción, dirección e imagen
         const restaurants = [
             { name: "Restaurante 1", description: "Descripción del restaurante 1.", address: "Cll falsa 123", image: "https://fastly.picsum.photos/id/42/3456/2304.jpg?hmac=dhQvd1Qp19zg26MEwYMnfz34eLnGv8meGk_lFNAJR3g" },
             { name: "Restaurante 2", description: "Descripción del restaurante 2.", address: "Cll falsa 123", image: "https://fastly.picsum.photos/id/163/2000/1333.jpg?hmac=htdHeSJwlYOxS8b0TTpz2s8tD_QDlmsd3JHYa_HGrg8" },
             { name: "Restaurante 3", description: "Descripción del restaurante 3.", address: "Cll falsa 123", image: "https://fastly.picsum.photos/id/431/5000/3334.jpg?hmac=T2rL_gBDyJYpcr1Xm8Kv7L6bhwvmZS8nKT5w3ok58kA" }
         ];
 
+        // Referencias al cuadro de búsqueda y al contenedor donde se mostrarán los resultados
         const searchInput = document.getElementById('searchInput');
         const resultsContainer = document.getElementById('results');
 
+        // Evento: cuando el usuario escribe algo en el cuadro de búsqueda
         searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase();
-            resultsContainer.innerHTML = '';
+            const query = searchInput.value.toLowerCase(); // Lo que escribe el usuario, en minúsculas
+            resultsContainer.innerHTML = ''; // Borra lo que había antes en los resultados
             
+            // Filtra los restaurantes que coincidan con lo que se busca
             restaurants
-            .filter(restaurant => restaurant.name.toLowerCase().includes(query))
+            .filter(restaurant => restaurant.name.toLowerCase().includes(query)) // Si el nombre contiene el texto buscado
             .forEach(restaurant => {
+                // Por cada restaurante que coincide, se crea una tarjeta con su información
                 resultsContainer.innerHTML += `<div class="bg-white rounded-lg shadow-md overflow-hidden">
                         <img src="${restaurant.image}" alt="${restaurant.name}" class="w-full h-48 object-cover">
                         <div class="p-4">
@@ -58,7 +69,6 @@
                 `;
             });
         });
-
     </script>
 
 </body>
