@@ -6,16 +6,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> <!-- Agrega Tailwind CSS, una herramienta para diseñar rápido -->
     <title>Search</title> <!-- Título que aparece en la pestaña del navegador -->
 </head>
-<body class="bg-gray-100 font-sans"> <!-- Fondo gris claro y tipo de letra limpia -->
+<body class="bg-gray-300 font-sans"> <!-- Fondo gris claro y tipo de letra limpia -->
 
     <!-- Navbar: es la barra de navegación que está en la parte superior -->
-    <nav class="bg-gray-900 text-white p-4"> <!-- Fondo gris oscuro, letras blancas y espacio interno -->
+    <nav class="bg-blue-400 text-white p-4"> <!-- Fondo gris oscuro, letras blancas y espacio interno -->
         <div class="container mx-auto flex justify-between items-center"> <!-- Organiza el contenido centrado y separado en dos lados -->
             <h1 class="text-2xl font-bold">Directorio de Restaurantes</h1> <!-- Título de la barra de navegación -->
             <div class="space-x-4"> <!-- Agrega espacio entre los enlaces -->
-                <a href="home.html" class="hover:text-blue-300">Home</a> <!-- Enlace a la página principal -->
-                <a href="search.html" class="hover:text-blue-300">Search</a> <!-- Enlace a la página de búsqueda -->
-                <a href="new-restaurant.html" class="hover:text-blue-300">New Restaurant</a> <!-- Enlace para agregar un nuevo restaurante -->
+                <a href="home.html" class="hover:text-red-300">Home</a> <!-- Enlace a la página principal -->
+                <a href="search.html" class="hover:text-red-300">Search</a> <!-- Enlace a la página de búsqueda -->
+                <a href="new-restaurant.html" class="hover:text-red-300">New Restaurant</a> <!-- Enlace para agregar un nuevo restaurante -->
             </div>
         </div>
     </nav>
@@ -26,7 +26,7 @@
         <!-- Cuadro de búsqueda -->
         <div class="flex justify-center mb-6">
             <input type="text" id="searchInput" placeholder="Buscar por nombre..." 
-                   class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                   class="w-full md:w-1/2 p-3 border border-orange-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
             <!-- Cuadro de texto para buscar, ocupa toda la fila en móvil y la mitad en pantallas medianas -->
         </div>
 
@@ -47,6 +47,16 @@
         // Referencias al cuadro de búsqueda y al contenedor donde se mostrarán los resultados
         const searchInput = document.getElementById('searchInput');
         const resultsContainer = document.getElementById('results');
+        restaurants.forEach(restaurant => {
+        resultsContainer.innerHTML += `<div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="${restaurant.image}" alt="${restaurant.name}" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">${restaurant.name}</h3>
+                <p class="text-gray-600 mb-2">${restaurant.description}</p>
+                <p class="text-gray-700"><strong>Dirección:</strong> ${restaurant.address}</p>
+            </div>
+        </div>`;
+        });
 
         // Evento: cuando el usuario escribe algo en el cuadro de búsqueda
         searchInput.addEventListener('input', () => {
